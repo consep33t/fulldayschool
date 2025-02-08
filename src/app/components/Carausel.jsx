@@ -1,64 +1,41 @@
-const Carausel = () => {
+"use client";
+import { useEffect, useState } from "react";
+
+const images = [
+  "https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp",
+  "https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp",
+  "https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp",
+  "https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp",
+  "https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp",
+  "https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp",
+  "https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp",
+];
+
+const Carousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="carousel w-full">
-      <div id="slide1" className="carousel-item relative w-full">
+    <div className="carousel rounded-box w-full h-[70vh] relative overflow-hidden">
+      {images.map((src, index) => (
         <img
-          src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
-          className="w-full"
+          key={index}
+          src={src}
+          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+          alt="Tailwind CSS Carousel component"
         />
-        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-          <a href="#slide4" className="btn btn-circle">
-            ❮
-          </a>
-          <a href="#slide2" className="btn btn-circle">
-            ❯
-          </a>
-        </div>
-      </div>
-      <div id="slide2" className="carousel-item relative w-full">
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
-          className="w-full"
-        />
-        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-          <a href="#slide1" className="btn btn-circle">
-            ❮
-          </a>
-          <a href="#slide3" className="btn btn-circle">
-            ❯
-          </a>
-        </div>
-      </div>
-      <div id="slide3" className="carousel-item relative w-full">
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
-          className="w-full"
-        />
-        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-          <a href="#slide2" className="btn btn-circle">
-            ❮
-          </a>
-          <a href="#slide4" className="btn btn-circle">
-            ❯
-          </a>
-        </div>
-      </div>
-      <div id="slide4" className="carousel-item relative w-full">
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
-          className="w-full"
-        />
-        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-          <a href="#slide3" className="btn btn-circle">
-            ❮
-          </a>
-          <a href="#slide1" className="btn btn-circle">
-            ❯
-          </a>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };
 
-export default Carausel;
+export default Carousel;

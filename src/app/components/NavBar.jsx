@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 const NavBar = () => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-500">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -47,23 +49,26 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Beranda</a>
+            <Link href="/">Beranda</Link>
           </li>
           <li>
             <details className="z-50">
               <summary>Profile Sekolah</summary>
               <ul className="p-2">
                 <li>
-                  <a>Submenu 1</a>
+                  <Link href="/program-kegiatan">Program Kegiatan</Link>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <Link href="/identitas">identitas</Link>
+                </li>
+                <li>
+                  <Link href="/visi-misi">Visi Misi</Link>
                 </li>
               </ul>
             </details>
           </li>
           <li>
-            <a>Kurikulum</a>
+            <Link href="/kurikulum">Kurikulum</Link>
           </li>
         </ul>
       </div>

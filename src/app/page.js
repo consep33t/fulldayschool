@@ -1,25 +1,23 @@
 import Carausel from "./components/Carausel";
 import CardKegiatan from "./components/CardKegiatan";
 import CardKepsek from "./components/CardKepsek";
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
 
 export default function Home() {
   return (
-    <div>
-      <NavBar />
+    <div className="px-6">
       <Carausel />
-      <div className="w-full justify-between flex p-16">
-        <div>
-          <h1 className="text-2xl">Kegiatan Terbaru</h1>
-          <div className="flex flex-wrap gap-4 h-32">
-            <CardKegiatan />
-            <CardKegiatan />
-          </div>
+      <h1 className="text-4xl font-semibold py-5">Kegiatan Terbaru</h1>
+      <div className="w-full gap-5 flex pb-5">
+        <div className="container-card flex flex-wrap gap-4 h-auto w-4/6">
+          <CardKegiatan />
+          <CardKegiatan />
+          <CardKegiatan />
+          <CardKegiatan />
         </div>
-        <CardKepsek />
+        <div className="w-4/12 flex justify-end">
+          <CardKepsek />
+        </div>
       </div>
-      <Footer />
     </div>
   );
 }
