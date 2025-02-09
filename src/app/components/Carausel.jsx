@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+
+import { useState, useEffect } from "react";
 
 const images = [
   "https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp",
@@ -23,17 +24,38 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="carousel rounded-box w-full h-[70vh] relative overflow-hidden">
-      {images.map((src, index) => (
-        <img
-          key={index}
-          src={src}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-            index === currentIndex ? "opacity-100" : "opacity-0"
-          }`}
-          alt="Tailwind CSS Carousel component"
-        />
-      ))}
+    <div className="relative w-full h-[70vh] overflow-hidden rounded-box">
+      <div
+        className="flex transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {images.map((src, index) => (
+          <img
+            key={index}
+            src={src}
+            className="w-full h-[70vh] object-cover flex-shrink-0"
+          />
+        ))}
+      </div>
+      {/* Manual navigation */}
+      <button
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 text-white rounded-full"
+        onClick={() =>
+          setCurrentIndex(
+            (prevIndex) => (prevIndex - 1 + images.length) % images.length
+          )
+        }
+      >
+        ❮
+      </button>
+      <button
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 text-white rounded-full"
+        onClick={() =>
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
+        }
+      >
+        ❯
+      </button>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <div className="navbar bg-base-500">
+    <div className="navbar bg-accent h-28">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,10 +44,10 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">FULLDAY</a>
+        <a className="btn btn-ghost text-4xl text-white">FULLDAY</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 text-lg text-white">
           <li>
             <Link href="/">Beranda</Link>
           </li>
@@ -70,10 +70,21 @@ const NavBar = () => {
           <li>
             <Link href="/kurikulum">Kurikulum</Link>
           </li>
+          <li>
+            <Link href="/kesiswaan">kesiswaan</Link>
+          </li>
+          <li>
+            <Link href="/kabar-terkini">Kabar-terkini</Link>
+          </li>
+          <li>
+            <Link href="/galeri">galeri</Link>
+          </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <Link href={"/login"} className="btn bg-background text-white text-lg">
+          Login
+        </Link>
       </div>
     </div>
   );
