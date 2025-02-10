@@ -19,7 +19,7 @@ const identitasPage = () => {
             </div>
           </div>
           <div className="w-1/3 p-16 absolute top-0 right-0">
-            <div className="w-full bg-secondary h-[90vh] rounded-md flex justify-center p-5 text-black">
+            <div className="w-full bg-secondary h-[75vh] rounded-md flex justify-center p-5 text-black">
               hoo
             </div>
           </div>
