@@ -9,7 +9,7 @@ const CardKegiatan = () => {
         duration: 0.4,
         scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
       }}
-      className="card card-side bg-primary shadow-xl h-72"
+      className="card card-side bg-primary w-[470px] shadow-xl h-72"
     >
       <figure>
         <img

@@ -82,7 +82,10 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link href={"/login"} className="btn bg-background text-white text-lg">
+        <Link
+          href={"/login"}
+          className="btn bg-secBackground text-white text-lg"
+        >
           Login
         </Link>
       </div>

@@ -1,6 +1,6 @@
 const CardKepsek = () => {
   return (
-    <div className="card bg-background w-[55%] shadow-xl transform translate-y-[-20%]">
+    <div className="card bg-background w-[70%] shadow-xl transform translate-y-[-20%]">
       <figure className="pt-10">
         <img
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
