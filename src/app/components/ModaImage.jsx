@@ -1,89 +1,90 @@
+// components/Carousel.js
 "use client";
-import { useState } from "react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-const images = [
-  {
-    id: 1,
-    image:
-      "https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp",
-  },
-  {
-    id: 2,
-    image:
-      "https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp",
-  },
-  {
-    id: 3,
-    image:
-      "https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp",
-  },
-  {
-    id: 4,
-    image:
-      "https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp",
-  },
-  {
-    id: 5,
-    image:
-      "https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp",
-  },
-  {
-    id: 6,
-    image:
-      "https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp",
-  },
-  {
-    id: 7,
-    image:
-      "https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp",
-  },
-];
+const Carousel = () => {
+  const [images, setImages] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-const ModalImage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  // Ambil data gambar saat komponen dimuat
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const res = await fetch("/api/images");
+        const data = await res.json();
+        setImages(data);
+        setActiveIndex(Math.floor(data.length / 2)); // Set activeIndex di tengah gambar setelah data dimuat
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+
+    fetchImages();
+  }, []);
+
+  const handlePrev = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
-      {images.map((data) => (
-        <div key={data.id} className="text-center">
-          <button onClick={() => setSelectedImage(data.image)}>
+    <div className="flex flex-col items-center justify-center w-full h-screen gap-6">
+      <div className="flex items-center justify-center gap-4">
+        <button
+          onClick={handlePrev}
+          className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full"
+        >
+          &lt;
+        </button>
+        <div className="w-full h-[70vh] flex items-center justify-center">
+          {images.length > 0 ? (
             <Image
-              width={300}
-              height={200}
-              src={data.image}
-              alt="Shoes"
-              className="rounded-xl cursor-pointer"
+              width={800}
+              height={600}
+              src={images[activeIndex].url}
+              alt={images[activeIndex].namaFoto}
+              className="w-full h-full object-cover rounded-lg shadow-2xl"
             />
-          </button>
+          ) : (
+            <p className="text-white">Loading...</p>
+          )}
         </div>
-      ))}
-
-      {/* Modal */}
-      {selectedImage && (
-        <dialog id="image_modal" className="modal modal-open">
-          <div className="modal-box">
-            <form method="dialog">
-              <button
-                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                onClick={() => setSelectedImage(null)}
-              >
-                ✕
-              </button>
-            </form>
-            <h3 className="font-bold text-lg mb-4">Selected Image</h3>
+        <button
+          onClick={handleNext}
+          className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full"
+        >
+          &gt;
+        </button>
+      </div>
+      <div className="flex gap-2 overflow-x-scroll w-2/3 py-4">
+        {images.map((image, index) => (
+          <div
+            key={image.id}
+            onClick={() => setActiveIndex(index)}
+            className={`cursor-pointer ${
+              activeIndex === index ? "border-4 border-blue-500 rounded-md" : ""
+            }`}
+          >
             <Image
-              width={500}
-              height={350}
-              src={selectedImage}
-              alt="Selected"
-              className="rounded-xl"
+              width={80}
+              height={80}
+              src={image.url} // Menggunakan url dari response API
+              alt={image.namaFoto}
+              className="w-20 h-20 object-cover rounded-md"
             />
           </div>
-        </dialog>
-      )}
+        ))}
+      </div>
     </div>
   );
 };
 
-export default ModalImage;
+export default Carousel;

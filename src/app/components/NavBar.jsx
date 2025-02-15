@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <div className="navbar bg-accent h-28">
+    <div className="navbar bg-accent h-16 fixed z-50 rounded-b-md">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,47 +44,49 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-4xl text-white">FULLDAY</a>
+        <Link href="/" className="btn btn-ghost text-4xl text-white">
+          FULLDAY
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-lg text-white">
+        <ul className="menu menu-horizontal px-1 text-md text-white">
           <li>
             <Link href="/">Beranda</Link>
           </li>
           <li>
-            <details className="z-50">
-              <summary>Profile Sekolah</summary>
-              <ul className="p-2">
+            <div className="z-50 dropdown dropdown-hover">
+              <div role="button">Profile Sekolah</div>
+              <ul className="p-2 dropdown-content menu mt-40 translate-x-[-15px] bg-accent text-white rounded-box shadow-lg w-52">
                 <li>
                   <Link href="/program-kegiatan">Program Kegiatan</Link>
                 </li>
                 <li>
-                  <Link href="/identitas">identitas</Link>
+                  <Link href="/identitas">Identitas</Link>
                 </li>
                 <li>
                   <Link href="/visi-misi">Visi Misi</Link>
                 </li>
               </ul>
-            </details>
+            </div>
           </li>
           <li>
             <Link href="/kurikulum">Kurikulum</Link>
           </li>
           <li>
-            <Link href="/kesiswaan">kesiswaan</Link>
+            <Link href="/kesiswaan">Kesiswaan</Link>
           </li>
           <li>
-            <Link href="/kabar-terkini">Kabar-terkini</Link>
+            <Link href="/kabar_terkini">Kabar terkini</Link>
           </li>
           <li>
-            <Link href="/galeri">galeri</Link>
+            <Link href="/galeri">Galeri</Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
         <Link
           href={"/login"}
-          className="btn bg-secBackground text-white text-lg"
+          className="btn bg-secBackground text-white text-md"
         >
           Login
         </Link>
