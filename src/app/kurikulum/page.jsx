@@ -28,7 +28,7 @@ const KurikulumPage = () => {
 
   return (
     <>
-      <div className="w-full p-6 space-y-6">
+      <div className="w-full p-6 space-y-6 overflow-hidden">
         <div className="w-full bg-secondary rounded-2xl flex items-center justify-center h-[70vh]">
           <HeroProgramKegiatan
             type="kurikulum"
@@ -37,12 +37,12 @@ const KurikulumPage = () => {
           />
         </div>
         <h1 className="text-6xl text-black font-semibold">Kurikulum</h1>
-        <div className="carousel carousel-end space-x-12">
+        <div className="carousel carousel-start space-x-6 md:space-x-12 w-full">
           <CardKurikulum />
         </div>
       </div>
       <div className="bg-blue-500 w-full h-96 flex justify-end items-center p-6">
-        <h1 className="text-6xl text-white font-bold text-end">
+        <h1 className="md:text-6xl text-4xl text-white font-bold text-end">
           IKUTI SERUNYA KEGIATAN
           <br /> BELAJAR DI KELAS FULLDAY!
         </h1>

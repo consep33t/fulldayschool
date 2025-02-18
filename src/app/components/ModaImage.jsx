@@ -7,13 +7,14 @@ const Carousel = () => {
   const [images, setImages] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Ambil data gambar saat komponen dimuat
   useEffect(() => {
     const fetchImages = async () => {
       try {
         const res = await fetch("/api/images");
         const data = await res.json();
         setImages(data);
-        setActiveIndex(Math.floor(data.length / 2));
+        setActiveIndex(Math.floor(data.length / 2)); // Set activeIndex di tengah gambar setelah data dimuat
       } catch (error) {
         console.error("Error fetching images:", error);
       }
@@ -75,7 +76,7 @@ const Carousel = () => {
             <Image
               width={80}
               height={80}
-              src={image.url} // Menggunakan url dari response API
+              src={image.url}
               alt={image.namaFoto}
               className="w-20 h-20 object-cover rounded-md"
             />

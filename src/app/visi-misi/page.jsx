@@ -4,8 +4,8 @@ const visiMisiPage = () => {
   return (
     <>
       <div className="w-full p-6 flex flex-col md:py-20">
-        <div className="visi-misi-container justify-end flex-col md:flex gap-10 w-full">
-          <div className="flex flex-col items-center p-5 bg-secondary rounded-lg text-black md:w-1/3">
+        <div className="visi-misi-container justify-center items-center flex-col md:flex md:flex-row gap-10 w-full">
+          <div className="flex flex-col items-center min-h-[84vh] p-5 bg-secondary rounded-lg text-black md:w-1/3">
             <h1 className="text-4xl pb-10 font-semibold">Visi</h1>
             <p>
               Mewujudkan Peserta Didik yang Unggul dalam Prestasi, Beriman,

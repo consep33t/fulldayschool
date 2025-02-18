@@ -26,9 +26,9 @@ const KesiswaanPage = () => {
   }
 
   return (
-    <div className="w-full p-6 space-y-6">
+    <div className="w-full p-6 md:space-y-6">
       <div>
-        <h1 className="text-5xl text-black font-semibold capitalize">
+        <h1 className="text-5xl pb-6 md:pb-0 text-black font-semibold capitalize">
           {heroProgramKegiatan.map((data) => data.judul)}
         </h1>
         <div className="w-full h-screen">

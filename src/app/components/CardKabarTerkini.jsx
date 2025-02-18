@@ -2,9 +2,11 @@
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const CardKabarTerkini = ({ type }) => {
   const [kabarTerkini, setKabarTerkini] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchKabarTerkini = async () => {
@@ -20,7 +22,6 @@ const CardKabarTerkini = ({ type }) => {
     fetchKabarTerkini();
   }, []);
 
-  // Fungsi untuk memotong teks sebelum \n pertama
   const potongSebelumNewline = (text) => {
     const index = text.indexOf("\n");
     if (index !== -1) {
@@ -29,9 +30,12 @@ const CardKabarTerkini = ({ type }) => {
     return text;
   };
 
-  // Jika type === 'beranda' tampilkan hanya 4, jika tidak tampilkan semua
   const dataTampil =
     type === "beranda" ? kabarTerkini.slice(0, 4) : kabarTerkini;
+
+  const handleDetailClick = (id) => {
+    router.push(`/kabar_terkini/detail/${id}`);
+  };
 
   return (
     <>
@@ -54,7 +58,12 @@ const CardKabarTerkini = ({ type }) => {
             />
           </figure>
           <div className="card-body text-black md:w-2/3">
-            <h2 className="card-title">{data.judul}</h2>
+            <h2
+              className="card-title cursor-pointer"
+              onClick={() => handleDetailClick(data.id)}
+            >
+              {data.judul}
+            </h2>
             <p className="">{potongSebelumNewline(data.isi)}</p>
             <p className="text-slate-600">
               {new Date(data.tanggal_manual).toLocaleDateString("id-ID", {

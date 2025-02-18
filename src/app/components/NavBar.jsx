@@ -52,7 +52,7 @@ const NavBar = () => {
               <Link href="/kabar_terkini">Kabar Terkini</Link>
             </li>
             <li>
-              <Link href="/galeri">Galeri</Link>
+              <Link href="/gallery">Galeri</Link>
             </li>
           </ul>
         </div>
@@ -98,7 +98,7 @@ const NavBar = () => {
       <div className="navbar-end">
         <Link
           href={"/"}
-          className="btn bg-secBackground btn-sm text-white md:text-md cursor-not-allowed"
+          className="btn bg-secBackground btn-sm md:btn-md text-white md:text-md cursor-not-allowed"
         >
           Login
         </Link>
