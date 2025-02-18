@@ -14,7 +14,7 @@ if (!fs.existsSync(uploadDir)) {
 // GET: Semua gambar
 export async function GET() {
   try {
-    const [rows] = await pool.query("SELECT * FROM images");
+    const [rows] = await pool.query("select * from images");
     return NextResponse.json(rows);
   } catch (error) {
     return NextResponse.json(
@@ -49,7 +49,7 @@ export async function POST(req) {
   const url = `/api/images/view/${fileName}`;
 
   try {
-    await pool.query("INSERT INTO images (namaFoto, url) VALUES (?, ?)", [
+    await pool.query("insert into images (namaFoto, url) values (?, ?)", [
       namaFoto,
       url,
     ]);
