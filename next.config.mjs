@@ -2,7 +2,18 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["img.daisyui.com", "localhost"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.daisyui.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "localhost.com",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

@@ -20,9 +20,8 @@ export async function POST(req) {
   const formData = await req.formData();
   const file = formData.get("file");
   const judul = formData.get("judul");
-  const subjudul = formData.get("subjudul");
 
-  if (!file || !judul || !subjudul) {
+  if (!file || !judul) {
     return NextResponse.json({ error: "Incomplete data" }, { status: 400 });
   }
 
@@ -42,8 +41,8 @@ export async function POST(req) {
 
   try {
     await pool.query(
-      "INSERT INTO hero_program_kegiatan (judul, url, subjudul) VALUES (?, ?, ?)",
-      [judul, url, subjudul]
+      "INSERT INTO hero_program_kegiatan (judul, url ) VALUES (?, ?)",
+      [judul, url]
     );
     return NextResponse.json({ message: "Image uploaded successfully" });
   } catch (error) {
@@ -55,12 +54,12 @@ export async function POST(req) {
 }
 
 export async function PUT(req) {
-  const { id, judul, subjudul, url } = await req.json();
+  const { id, judul, url } = await req.json();
   await pool.query(
-    "update hero_program_kegiatan set judul=?, subjudul=?, url=? where id=?",
-    [judul, subjudul, url, id]
+    "update hero_program_kegiatan set judul=?, url=? where id=?",
+    [judul, url, id]
   );
-  return NextResponse.json({ id, judul, subjudul, url });
+  return NextResponse.json({ id, judul, url });
 }
 
 export async function DELETE(req) {

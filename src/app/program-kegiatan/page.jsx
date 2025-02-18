@@ -1,29 +1,68 @@
+"use client";
 import CaraouselProgramKegiatan from "../components/CarausellProgramKegiatan";
 import HeroProgramKegiatan from "../components/HeroProgramKegiatan";
+import { useState, useEffect } from "react";
 
-const programKegiatanPage = () => {
+const ProgramKegiatanPage = () => {
+  const [heroProgramKegiatan, setHeroProgramKegiatan] = useState(null);
+  const [popUp, setPopUp] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [heroRes, popUpRes] = await Promise.all([
+          fetch("/api/hero_program_kegiatan/judul?search=program kegiatan"),
+          fetch("/api/popup_program_kegiatan"),
+        ]);
+
+        const heroData = await heroRes.json();
+        const popUpData = await popUpRes.json();
+
+        setHeroProgramKegiatan(heroData);
+        setPopUp(popUpData);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <>
       <div className="w-full p-6 relative">
         <div className="w-full h-[70vh]">
           <HeroProgramKegiatan
+            data={heroProgramKegiatan}
             title="Program & Kegiatan"
             subtitle="FULLDAY CLASS"
             type="program-kegiatan"
           />
         </div>
-        <div className="w-56 h-48 hover:translate-y-[-25vh] bg-secondary rounded-xl shadow-xl p-4 text-accent absolute top-[60vh] right-20 text-xs">
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
-            minus nesciunt possimus doloremque, exercitationem placeat,
-            voluptatibus nobis numquam nemo sapiente enim tenetur eius sunt
-            quisquam ducimus hic. Maxime, vero repellat.
-          </p>
-        </div>
-        <h1 className="text-3xl mt-24 md:mt-0 md:text-6xl uppercase text-accent font-bold text-center py-6">
+        {popUp.map((data, index) => (
+          <button
+            key={index}
+            className="w-56 h-48 bg-secondary rounded-xl shadow-xl p-4 text-white absolute top-[60vh] right-20 text-xs"
+          >
+            <p className="text-lg font-light text-center">{data.paragraf}</p>
+          </button>
+        ))}
+        <h1 className="text-3xl mt-24 md:mt-0 md:text-4xl md:my-5 uppercase text-accent font-bold text-center py-6">
           program kegiatan
         </h1>
-        <div className="">
+        <div>
           <CaraouselProgramKegiatan />
         </div>
       </div>
@@ -36,4 +75,5 @@ const programKegiatanPage = () => {
     </>
   );
 };
-export default programKegiatanPage;
+
+export default ProgramKegiatanPage;

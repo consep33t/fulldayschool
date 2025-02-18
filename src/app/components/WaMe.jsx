@@ -1,7 +1,19 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const WaMe = () => {
   return (
-    <div className="w-32 h-32 fixed bg-opacity-15 hover:bg-opacity-100 bottom-6 right-6 bg-green-600 rounded-full flex justify-center items-center">
-      <h1>WaMe</h1>
+    <div className="w-32 h-32 p-3 fixed bottom-0 right-0 hover:bottom-6 hover:right-6 cursor-pointer">
+      <Link href="/">
+        <Image
+          width={500}
+          height={500}
+          alt="chat-me"
+          src={"/chat.svg"}
+          priority
+          className="opacity-35 hover:opacity-100 transition-opacity duration-300 transform hover:scale-105"
+        />
+      </Link>
     </div>
   );
 };

@@ -26,21 +26,33 @@ const NavBar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Beranda</a>
+              <Link href="/">Beranda</Link>
             </li>
             <li>
-              <a>Profie Sekolah</a>
+              <p>Profie Sekolah</p>
               <ul className="p-2">
                 <li>
-                  <a>Submenu 1</a>
+                  <Link href="/program-kegiatan">Program Kegiatan</Link>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <Link href="/identitas">Identitas</Link>
+                </li>
+                <li>
+                  <Link href="/visi-misi">Visi Misi</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link href="/kurikulum">Kurikulum</Link>
+            </li>
+            <li>
+              <Link href="/kesiswaan">Kesiswaan</Link>
+            </li>
+            <li>
+              <Link href="/kabar_terkini">Kabar Terkini</Link>
+            </li>
+            <li>
+              <Link href="/galeri">Galeri</Link>
             </li>
           </ul>
         </div>
@@ -85,8 +97,8 @@ const NavBar = () => {
       </div>
       <div className="navbar-end">
         <Link
-          href={"/login"}
-          className="btn bg-secBackground text-white text-md"
+          href={"/"}
+          className="btn bg-secBackground text-white text-md cursor-not-allowed"
         >
           Login
         </Link>
