@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function ContohUseEffect({ params }) {
   const { id } = params;
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([null]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function ContohUseEffect({ params }) {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   const buatParagrafBaru = (text) => {
     return text.split("\n").map((baris, index) => (
@@ -41,7 +41,19 @@ export default function ContohUseEffect({ params }) {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center text-4xl text-black">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center text-4xl text-black">
+        Berita tidak ditemukan
+      </div>
+    );
   }
 
   return (
