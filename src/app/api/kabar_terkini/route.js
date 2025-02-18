@@ -44,7 +44,7 @@ export async function POST(req) {
 
   try {
     await pool.query(
-      "INSERT INTO kabar_terkini (judul, url, isi, tanggal_manual) VALUES (?, ?, ?, ?)",
+      "insert into kabar_terkini (judul, url, isi, tanggal_manual) values (?, ?, ?, ?)",
       [judul, url, isi, tanggal_manual]
     );
     return NextResponse.json({ message: "Image uploaded successfully" });
@@ -60,7 +60,7 @@ export async function POST(req) {
 export async function PUT(req) {
   const { id, judul, isi, gambar, tanggal_manual } = await req.json();
   await pool.query(
-    "UPDATE kabar_terkini SET judul=?, isi=?, gambar=?, tanggal_manual=? WHERE id=?",
+    "update kabar_terkini SET judul=?, isi=?, gambar=?, tanggal_manual=? where id=?",
     [judul, isi, gambar, tanggal_manual, id]
   );
   return NextResponse.json({ id, judul, isi, gambar, tanggal_manual });
@@ -69,6 +69,6 @@ export async function PUT(req) {
 // DELETE: Hapus data berdasarkan id
 export async function DELETE(req) {
   const { id } = await req.json();
-  await pool.query("DELETE FROM kabar_terkini WHERE id=?", [id]);
+  await pool.query("delete from kabar_terkini where id=?", [id]);
   return NextResponse.json({ message: "Data berhasil dihapus" });
 }

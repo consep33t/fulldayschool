@@ -14,7 +14,7 @@ if (!fs.existsSync(uploadDir)) {
 
 // GET: Ambil semua data
 export async function GET() {
-  const [rows] = await pool.query("SELECT * FROM kepala_sekolah");
+  const [rows] = await pool.query("select * from kepala_sekolah");
   return NextResponse.json(rows);
 }
 
@@ -46,7 +46,7 @@ export async function POST(req) {
 
   try {
     await pool.query(
-      "INSERT INTO kepala_sekolah (nama, url, moto, paragraf) VALUES (?, ?, ?, ?)",
+      "insert into kepala_sekolah (nama, url, moto, paragraf) VALUES (?, ?, ?, ?)",
       [nama, url, moto, paragraf]
     );
     return NextResponse.json({ message: "Image uploaded successfully" });
@@ -70,7 +70,7 @@ export async function PUT(req) {
 
   try {
     await pool.query(
-      "UPDATE kepala_sekolah SET nama=?, moto=?, paragraf=?, url=? WHERE id=?",
+      "update kepala_sekolah set nama=?, moto=?, paragraf=?, url=? where id=?",
       [nama, moto, paragraf, url, id]
     );
     return NextResponse.json({
@@ -98,7 +98,7 @@ export async function DELETE(req) {
   }
 
   try {
-    await pool.query("DELETE FROM kepala_sekolah WHERE id=?", [id]);
+    await pool.query("delete from kepala_sekolah where id=?", [id]);
     return NextResponse.json({ message: "Data berhasil dihapus" });
   } catch (error) {
     console.error("Error saat menghapus:", error);
