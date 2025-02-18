@@ -3,23 +3,23 @@ import Image from "next/image";
 const visiMisiPage = () => {
   return (
     <>
-      <div className="w-full p-6 flex flex-col py-20">
-        <div className="visi-misi-container justify-end flex gap-10 w-full">
-          <Image
-            width={500}
-            height={500}
-            src={"/education.png"}
-            className="w-96 h-96"
-            alt="education icon"
-          />
-          <div className="flex flex-col items-center p-5 bg-secondary rounded-lg text-black w-1/3">
+      <div className="w-full p-6 flex flex-col md:py-20">
+        <div className="visi-misi-container justify-end flex-col md:flex gap-10 w-full">
+          <div className="flex flex-col items-center p-5 bg-secondary rounded-lg text-black md:w-1/3">
             <h1 className="text-4xl pb-10 font-semibold">Visi</h1>
             <p>
               Mewujudkan Peserta Didik yang Unggul dalam Prestasi, Beriman,
               Berilmu, Berkarakter dan Berwawasan Global.
             </p>
           </div>
-          <div className="flex flex-col items-center p-5 bg-secondary text-black rounded-lg w-1/3">
+          <Image
+            width={500}
+            height={500}
+            src={"/education.png"}
+            className="md:w-96 md:h-96 w-28 h-28 md:my-0 my-6"
+            alt="education icon"
+          />
+          <div className="flex flex-col items-center p-5 bg-secondary text-black rounded-lg md:w-1/3">
             <h1 className="text-4xl pb-10 font-semibold">Misi</h1>
             <ul>
               <li>
@@ -58,7 +58,7 @@ const visiMisiPage = () => {
         </div>
       </div>
       <div className="w-full p-20 bg-secBackground">
-        <h1 className="text-center font-bold text-6xl text-white">
+        <h1 className="text-center font-bold text-2xl md:text-6xl text-white">
           DIRANCANG BUAT KAMU!
         </h1>
       </div>

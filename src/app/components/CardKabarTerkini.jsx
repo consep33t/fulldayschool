@@ -44,7 +44,7 @@ const CardKabarTerkini = ({ type }) => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="card md:card-side bg-primary shadow-xl md:h-72"
         >
-          <figure className="w-1/3">
+          <figure className="w-full md:w-1/3">
             <Image
               width={500}
               height={500}
@@ -53,7 +53,7 @@ const CardKabarTerkini = ({ type }) => {
               className="h-full w-full object-cover"
             />
           </figure>
-          <div className="card-body text-black w-2/3">
+          <div className="card-body text-black md:w-2/3">
             <h2 className="card-title">{data.judul}</h2>
             <p className="">{potongSebelumNewline(data.isi)}</p>
             <p className="text-slate-600">

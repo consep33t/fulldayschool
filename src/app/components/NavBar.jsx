@@ -8,7 +8,7 @@ const NavBar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-7 w-7"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -98,7 +98,7 @@ const NavBar = () => {
       <div className="navbar-end">
         <Link
           href={"/"}
-          className="btn bg-secBackground text-white text-md cursor-not-allowed"
+          className="btn bg-secBackground btn-sm text-white md:text-md cursor-not-allowed"
         >
           Login
         </Link>

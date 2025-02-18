@@ -14,8 +14,8 @@ const HeroProgramKegiatan = ({ title, subtitle, type, data }) => {
           <div className="hero-overlay bg-opacity-40 rounded-xl"></div>
           <div className="hero-content text-neutral-content text-center">
             <div className="max-w-4xl text-white">
-              <h1 className="mb-5 text-7xl font-bold">{title}</h1>
-              <h2 className="mb-5 text-5xl font-semibold">{subtitle}</h2>
+              <h1 className="mb-5 text-2xl md:text-7xl font-bold">{title}</h1>
+              <h2 className="mb-5 md:text-5xl font-semibold">{subtitle}</h2>
             </div>
           </div>
         </div>
