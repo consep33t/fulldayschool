@@ -22,7 +22,7 @@ const KesiswaanPage = () => {
   }, []);
 
   if (!heroProgramKegiatan) {
-    return <div>Loading...</div>;
+    return <div className="w-full h-screen">Loading...</div>;
   }
 
   return (

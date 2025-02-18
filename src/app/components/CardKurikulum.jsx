@@ -26,7 +26,7 @@ const CardKurikulum = () => {
   return (
     <>
       {kurikulum.map((data) => (
-        <div key={data.id} className="carousel-item w-[85%]">
+        <div key={data.id} className="carousel-item w-[85%] md:w-[28%]">
           <div className="card bg-secondary w-full shadow-xl">
             <figure className="px-10 pt-10">
               <Image

@@ -1,5 +1,5 @@
 import CardKabarTerkini from "../components/CardKabarTerkini";
-import SideBarKabarTerkini from "../components/SideBarKabarTerkini";
+// import SideBarKabarTerkini from "../components/SideBarKabarTerkini";
 
 const kabarTerkiniPage = () => {
   return (
@@ -10,12 +10,12 @@ const kabarTerkiniPage = () => {
         </h1>
         <CardKabarTerkini />
       </div>
-      <div className="hidden md:block w-1/4 pl-6 fixed right-0">
+      {/* <div className="hidden md:block w-1/4 pl-6 fixed right-0">
         <SideBarKabarTerkini />
         <SideBarKabarTerkini />
         <SideBarKabarTerkini />
         <SideBarKabarTerkini />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -33,11 +33,22 @@ const ProgramKegiatanPage = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <h1 className="text-4xl text-black uppercase">loading....</h1>
+      </div>
+    );
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <h1 className="text-4xl text-black uppercase">ERROR: 500 </h1>
+        <h4 className="text-4xl text-black uppercase">
+          server bermasalah silakan coba lagi dalam beberapa saat
+        </h4>
+      </div>
+    );
   }
 
   return (
